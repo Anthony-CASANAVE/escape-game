@@ -24,13 +24,18 @@ var animate = function () {
 
 animate();
 
-camera.position.z = 50;
-camera.rotation.z = 180 * Math.PI / 180;
+camera.position.z = 10;
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.25;
+controls.dampingFactor = 0.05;
+controls.enableRotate = false;
+controls.maxDistance = 40;
+controls.minDistance = 10;
+
 controls.enableZoom = true;
+
+
 
 controls.update();
 
@@ -55,18 +60,21 @@ var mesh = null;
 
 var mtlLoader = new THREE.MTLLoader();
 mtlLoader.setPath( "models/" );
-mtlLoader.load( 'FullSceneBigOpti1.mtl', function( materials ) {
+mtlLoader.load( 'AmphitheatreComplet.mtl', function( materials ) {
 
     materials.preload();
 
     var objLoader = new THREE.OBJLoader();
     objLoader.setMaterials( materials );
     objLoader.setPath( "models/" );
-    objLoader.load( 'FullSceneBigOpti1.obj', function ( object ) {
+    objLoader.load( 'AmphitheatreComplet.obj', function ( object ) {
 
         mesh = object;
         object.scale.x = object.scale.y = object.scale.z = 0.02;
         scene.add( mesh );
+
+        mesh.position.z = 30;
+        mesh.rotateX( Math.PI / 3 );
 
     } );
 

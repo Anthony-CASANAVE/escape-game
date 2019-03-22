@@ -25,7 +25,13 @@
 }
 body{
     text-align: center;
-    color: white;
     background-color: black;
+}
 
+h3, p{
+    color: lightgray;
+}
+
+h2{
+    color: lightgray;
 }

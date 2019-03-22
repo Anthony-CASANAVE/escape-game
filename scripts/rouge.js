@@ -208,7 +208,7 @@ importImmobileThings(OBJAmphi, MTLAmphi, 0, 0, 30);
 importThings(OBJIndRo, MTLIndRo, rangX8, rangY8, rangZ8, "indiceRouge");
 importThings(OBJIndRo, MTLIndRo, rangX6, rangY10, rangZ10, "indiceRouge");
 importThings(OBJIndRo, MTLIndRo, rangX9, rangY6, rangZ6, "indiceRouge");
-importThings(OBJIndRo, MTLIndRo, rangX12, rangY2, rangZ2, "indiceRouge");
+    importThings(OBJIndRo, MTLIndRo, rangX12, rangY2, rangZ2, "indiceRouge");
 importThings(OBJIndRo, MTLIndRo, rangX16, rangY3, rangZ3, "indiceRouge");
 importThings(OBJIndRo, MTLIndRo, rangX28, rangY1, rangZ1, "indiceRouge");
 importThings(OBJIndRo, MTLIndRo, rangX32, rangY6, rangZ6, "indiceRouge");

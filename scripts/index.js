@@ -1,6 +1,6 @@
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var clock = new THREE.Clock;
+
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -12,26 +12,28 @@ var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.enableRotate = false;
-// controls.maxDistance = 40;
+controls.maxDistance = 40;
 controls.minDistance = 10;
 controls.enableZoom = true;
+
 
 flashlight = new THREE.SpotLight(0xffffff,4,40);
 camera.add(flashlight);
 flashlight.position.set(0,0,1);
 flashlight.target = camera;
 
-
-var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 0.6);
+renderer.physicallyCorrectLights = true;
+var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 2);
 keyLight.position.set(-100, 0, 100);
 
-var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.65);
+var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 1);
 fillLight.position.set(100, 0, 100);
 
-var backLight = new THREE.DirectionalLight(0xffffff, 0.6);
+var backLight = new THREE.DirectionalLight(0xffffff, 2);
 backLight.position.set(100, 0, -100).normalize();
 
-var ambiantLight = new THREE.AmbientLight( 0x404040 );
+const ambientLight = new THREE.HemisphereLight( 0xddeeff, 0x202020, 2);
+
 
 //Building variable for easy tips placing.
 var rangY1 = -132;
@@ -191,7 +193,7 @@ window.addEventListener('resize', function(){
 camera.position.z = 10;
 
 //Spawning lights
-scene.add(ambiantLight);
+scene.add( ambientLight );
 scene.add(keyLight);
 scene.add(fillLight);
 scene.add(backLight);

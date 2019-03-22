@@ -8,14 +8,27 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 
 document.getElementById('webgl').appendChild(renderer.domElement);
 
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
+// var controls = new THREE.OrbitControls(camera, renderer.domElement);
+// controls.enableDamping = true;
+// controls.dampingFactor = 0.05;
+// controls.enableRotate = false;
+// controls.maxDistance = 40;
+// controls.minDistance = 10;
+// controls.enableZoom = true;
+
+controls = new THREE.MapControls( camera, renderer.domElement );
 controls.enableDamping = true;
-controls.dampingFactor = 0.05;
+controls.dampingFactor = 0.25;
 controls.enableRotate = false;
+controls.screenSpacePanning = true;
 controls.maxDistance = 40;
 controls.minDistance = 10;
 controls.enableZoom = true;
+controls.maxPolarAngle = Math.PI / 2;
 
+
+
+scene.fog = new THREE.FogExp2( 0xcccccc, 0.015 );
 
 flashlight = new THREE.SpotLight(0xffffff,4,40);
 camera.add(flashlight);

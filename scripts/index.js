@@ -5,35 +5,22 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 
 
-
 document.getElementById('webgl').appendChild(renderer.domElement);
 
-// var controls = new THREE.OrbitControls(camera, renderer.domElement);
-// controls.enableDamping = true;
-// controls.dampingFactor = 0.05;
-// controls.enableRotate = false;
-// controls.maxDistance = 40;
-// controls.minDistance = 10;
-// controls.enableZoom = true;
-
 controls = new THREE.MapControls( camera, renderer.domElement );
-controls.enableDamping = true;
+controls.enableDamping = false;
 controls.dampingFactor = 0.25;
 controls.enableRotate = false;
 controls.screenSpacePanning = true;
-controls.maxDistance = 40;
+controls.maxDistance = 100;
 controls.minDistance = 10;
 controls.enableZoom = true;
 controls.maxPolarAngle = Math.PI / 2;
 
 
 
-scene.fog = new THREE.FogExp2( 0xcccccc, 0.015 );
+scene.fog = new THREE.FogExp2( 0xcccccc, 0.018 );
 
-flashlight = new THREE.SpotLight(0xffffff,4,40);
-camera.add(flashlight);
-flashlight.position.set(0,0,1);
-flashlight.target = camera;
 
 renderer.physicallyCorrectLights = true;
 var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 2);
@@ -60,6 +47,7 @@ var rangY8 = 14.41;
 var rangY9 = 35.33;
 var rangY10 = 56.25;
 var rangY11 = 77.16;
+var rangY12 = 77.16;
 
 
 var rangZ1 = -1.3;
@@ -73,6 +61,7 @@ var rangZ8 = -10.3;
 var rangZ9 = -11.6;
 var rangZ10 = -12.9;
 var rangZ11 = -14.2;
+var rangZ12 = -14.2;
 //Prévoir 38 axes X
 var rangX1 = -394.75;
 var rangX2 = -384.5;
@@ -119,8 +108,8 @@ var rangX38 = 88.75;
 //Ci dessous, importer un mesh en .obj et lui appliquer les coloration basiques du .mtl. Placer tout ce qui est entre ce message et le message de la prochaine importation pour désactiver.
 
 
-var OBJAmphi = 'models/AmphitheatreComplet.obj';
-var MTLAmphi = 'models/AmphitheatreComplet.mtl';
+var OBJAmphi = 'models/slicedModels.obj';
+var MTLAmphi = 'models/slicedModels.mtl';
 var OBJIndBl = 'models/IndiceBleu.obj';
 var MTLIndBl = 'models/IndiceBleu.mtl';
 var OBJIndJa = 'models/IndiceJaune.obj';
@@ -204,6 +193,7 @@ window.addEventListener('resize', function(){
 });
 
 camera.position.z = 10;
+camera.rotation.set( 0, 0, 0 );
 
 //Spawning lights
 scene.add( ambientLight );
@@ -215,35 +205,113 @@ scene.add(backLight);
 //Spawning models
 importImmobileThings(OBJAmphi, MTLAmphi, 0, 0, 30);
 
-importThings(OBJIndBl, MTLIndBl, -19, rangY7, rangZ7, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, rangX13, rangY7, rangZ7, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, 1.5, rangY6, rangZ6, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, 10, 0, -10, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, rangX34, rangY1, rangZ1, "indiceBleu");
+//Indices équipe bleu
+// importThings(OBJIndBl, MTLIndBl, rangX8, rangY1, rangZ1, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX32, rangY1, rangZ1, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX10, rangY4, rangZ4, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX25, rangY4, rangZ4, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX29, rangY7, rangZ7, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX14, rangY9, rangZ9, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX37, rangY9, rangZ9, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX1, rangY11, rangZ11, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX9, rangY11, rangZ11, "indiceBleu");
+// importThings(OBJIndBl, MTLIndBl, rangX28, rangY11, rangZ11, "indiceBleu");
 
-
-
-importThings(OBJIndBl, MTLIndBl, rangX33, rangY7, rangZ7, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, rangX1, rangY8, rangZ8, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, rangX38, rangY9, rangZ9, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, rangX36, rangY10, rangZ10, "indiceBleu");
-importThings(OBJIndBl, MTLIndBl, rangX2, rangY11, rangZ11, "indiceBleu");
-
-// importThings(OBJIndJa, MTLIndJa, 5, 0, 0, "indiceJaune");
-// importThings(OBJIndRo, MTLIndRo, 10, 0, 0, "indiceRouge");
-// importThings(OBJIndVe, MTLIndVe, 15, 0, 0, "indiceVert");
-// importThings(OBJIndVi, MTLIndVi, 20, 0, 0, "indiceViolet");
+//Indices équipe jaune
+// importThings(OBJIndJa, MTLIndJa, rangX1, rangY9, rangZ9, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX5, rangY1, rangZ1, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX9, rangY9, rangZ9, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX16, rangY6, rangZ6, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX18, rangY4, rangZ4, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX21, rangY7, rangZ7, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX25, rangY10, rangZ10, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX29, rangY5, rangZ5, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX34, rangY4, rangZ4, "indiceJaune");
+// importThings(OBJIndJa, MTLIndJa, rangX37, rangY11, rangZ11, "indiceJaune");
+//Indices équipe rouge
+// importThings(OBJIndRo, MTLIndRo, rangX8, rangY8, rangZ8, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX6, rangY10, rangZ10, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX9, rangY6, rangZ6, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX12, rangY2, rangZ2, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX16, rangY3, rangZ3, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX28, rangY1, rangZ1, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX32, rangY6, rangZ6, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX35, rangY10, rangZ10, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX35, rangY2, rangZ2, "indiceRouge");
+// importThings(OBJIndRo, MTLIndRo, rangX37, rangY8, rangZ8, "indiceRouge");
+//Indices équipe verte
+// importThings(OBJIndVe, MTLIndVe, rangX2, rangY11, rangZ11, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX7, rangY3, rangZ3, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX13, rangY11, rangZ11, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX13, rangY5, rangZ5, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX17, rangY8, rangZ8, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX22, rangY4, rangZ4, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX24, rangY8, rangZ8, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX29, rangY9, rangZ9, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX31, rangY3, rangZ3, "indiceVert");
+// importThings(OBJIndVe, MTLIndVe, rangX38, rangY10, rangZ10, "indiceVert");
+//Indices équipe violette
+importThings(OBJIndVi, MTLIndVi, rangX3, rangY10, rangZ10, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX5, rangY5, rangZ5, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX11, rangY8, rangZ8, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX17, rangY10, rangZ10, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX17, rangY1, rangZ1, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX22, rangY11, rangZ11, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX24, rangY2, rangZ2, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX26, rangY6, rangZ6, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX34, rangY8, rangZ8, "indiceViolet");
+importThings(OBJIndVi, MTLIndVi, rangX36, rangY12, rangZ12, "indiceViolet");
 
 
 
 var animate = function () {
     requestAnimationFrame( animate );
 
+    if(camera.position.x > 2000){
+        camera.position.x = 0;
+        camera.rotation.set( 0, 0, 0 );
+        controls.update();
 
+    }
+
+    if(camera.position.x < -2000){
+        camera.position.x = 0;
+        camera.rotation.set( 0, 0, 0 );
+        controls.update();
+    }
+
+    if(camera.position.y > 2000){
+        camera.position.y = 0;
+        camera.rotation.set( 0, 0, 0 );
+        controls.update();
+    }
+
+    if(camera.position.y < -2000){
+        camera.position.y = 0;
+        camera.rotation.set( 0, 0, 0 );
+        controls.update();
+    }
+    if(camera.position.z > 100){
+        camera.position.z = 25;
+        camera.rotation.set( 0, 0, 0 );
+        controls.distance = 25;
+        controls.update();
+    }
+
+    if(camera.position.z < 10){
+        camera.position.z = 20;
+        camera.rotation.set( 0, 0, 0 );
+        controls.distance = 20;
+        controls.update();
+    }
+
+    camera.rotation.set( 0, 0, 0 );
+    controls.update();
     renderer.render(scene, camera);
 };
 
-controls.update();
-animate();
 
+
+animate();
+controls.update();
 

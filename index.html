@@ -5,22 +5,18 @@
     <meta charset=utf-8>
     <title>My first three.js app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/index.css">
 
 </head>
 <body>
 
-    <div id="webgl"></div>
+    <div class="container">
+        <p>Choisissez votre équipe !</p>
 
-    <script src="scripts/dat.gui.min.js"></script>
+        <span class="red box" onclick="location.href='rouge.html';"></span><span class="violet box" onclick="location.href='violet.html';"></span><span class="green box" onclick="location.href='vert.html';"></span><span class="blue box" onclick="location.href='bleu.html';"></span><span
+            class="yellow box" onclick="location.href='jaune.html';"></span>
+    </div>
 
-    <script src="scripts/three.js"></script>
-    <!--<script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>-->
-
-    <script src="scripts/OrbitControls.js"></script>
-    <script src="scripts/MapControls.js"></script>
-    <script src="scripts/MTLLoader.js"></script>
-    <script src="scripts/OBJLoader.js"></script>
-    <!--<script src="scripts/OBJMTLLoader.js"></script>-->
     <script src="scripts/index.js"></script>
 
 </body>

@@ -1,0 +1,31 @@
+.container {
+    width:750px;
+    overflow:hidden;
+}
+.box {
+    width:150px;
+    height:150px;
+    float:left;
+}
+
+.red{
+    background:#FE0801;
+}
+.green{
+    background:#35FE01;
+}
+.blue{
+    background:#0157FE;
+}
+.yellow{
+    background:#FEEB01;
+}
+.violet{
+    background:#E301FE;
+}
+body{
+    text-align: center;
+    color: white;
+    background-color: black;
+
+}
